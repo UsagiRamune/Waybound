@@ -1,0 +1,111 @@
+# ===============================================================
+# Waybound - .gitattributes (Unity 2D, solo project)
+# ===============================================================
+
+# Normalize line endings: git decides text vs binary automatically
+* text=auto
+
+# ---------------------------------------------------------------
+# Unity YAML (scenes, prefabs, assets...) - force LF, so Windows
+# CRLF doesn't create phantom diffs. merge driver is optional:
+# works only if UnityYAMLMerge is configured in your git config,
+# otherwise git falls back to normal text merge (harmless).
+# ---------------------------------------------------------------
+*.unity         merge=unityyamlmerge eol=lf
+*.prefab        merge=unityyamlmerge eol=lf
+*.asset         merge=unityyamlmerge eol=lf
+*.mat           merge=unityyamlmerge eol=lf
+*.anim          merge=unityyamlmerge eol=lf
+*.controller    merge=unityyamlmerge eol=lf
+*.overrideController merge=unityyamlmerge eol=lf
+*.physicsMaterial2D  merge=unityyamlmerge eol=lf
+*.playable      merge=unityyamlmerge eol=lf
+*.mask          merge=unityyamlmerge eol=lf
+*.signal        merge=unityyamlmerge eol=lf
+*.spriteatlas   merge=unityyamlmerge eol=lf
+*.spriteatlasv2 merge=unityyamlmerge eol=lf
+*.lighting      merge=unityyamlmerge eol=lf
+*.terrainlayer  merge=unityyamlmerge eol=lf
+*.preset        merge=unityyamlmerge eol=lf
+*.meta          merge=unityyamlmerge eol=lf
+
+# ---------------------------------------------------------------
+# Text files
+# ---------------------------------------------------------------
+*.cs            text diff=csharp
+*.cginc         text
+*.hlsl          text
+*.shader        text
+*.compute       text
+*.shadergraph   text eol=lf
+*.shadersubgraph text eol=lf
+*.asmdef        text eol=lf
+*.asmref        text eol=lf
+*.inputactions  text eol=lf
+*.uxml          text eol=lf
+*.uss           text eol=lf
+*.json          text eol=lf
+*.md            text
+*.txt           text
+*.yml           text eol=lf
+*.yaml          text eol=lf
+*.sh            text eol=lf
+*.bat           text eol=crlf
+*.cmd           text eol=crlf
+
+# ---------------------------------------------------------------
+# Git LFS - large binary assets
+# Needs `git lfs install` once per machine (Git for Windows
+# usually ships with LFS). GitHub free LFS quota is small
+# (about 1 GB storage / 1 GB bandwidth per month).
+# ---------------------------------------------------------------
+
+# Images / source art
+*.png           filter=lfs diff=lfs merge=lfs -text
+*.jpg           filter=lfs diff=lfs merge=lfs -text
+*.jpeg          filter=lfs diff=lfs merge=lfs -text
+*.gif           filter=lfs diff=lfs merge=lfs -text
+*.tga           filter=lfs diff=lfs merge=lfs -text
+*.tif           filter=lfs diff=lfs merge=lfs -text
+*.tiff          filter=lfs diff=lfs merge=lfs -text
+*.bmp           filter=lfs diff=lfs merge=lfs -text
+*.exr           filter=lfs diff=lfs merge=lfs -text
+*.hdr           filter=lfs diff=lfs merge=lfs -text
+*.psd           filter=lfs diff=lfs merge=lfs -text
+*.psb           filter=lfs diff=lfs merge=lfs -text
+*.ai            filter=lfs diff=lfs merge=lfs -text
+*.kra           filter=lfs diff=lfs merge=lfs -text
+*.clip          filter=lfs diff=lfs merge=lfs -text
+*.afphoto       filter=lfs diff=lfs merge=lfs -text
+*.aseprite      filter=lfs diff=lfs merge=lfs -text
+*.ase           filter=lfs diff=lfs merge=lfs -text
+
+# Audio
+*.wav           filter=lfs diff=lfs merge=lfs -text
+*.mp3           filter=lfs diff=lfs merge=lfs -text
+*.ogg           filter=lfs diff=lfs merge=lfs -text
+*.aif           filter=lfs diff=lfs merge=lfs -text
+*.aiff          filter=lfs diff=lfs merge=lfs -text
+*.flac          filter=lfs diff=lfs merge=lfs -text
+
+# Video
+*.mp4           filter=lfs diff=lfs merge=lfs -text
+*.mov           filter=lfs diff=lfs merge=lfs -text
+*.webm          filter=lfs diff=lfs merge=lfs -text
+
+# 3D models
+*.fbx           filter=lfs diff=lfs merge=lfs -text
+*.obj           filter=lfs diff=lfs merge=lfs -text
+*.blend         filter=lfs diff=lfs merge=lfs -text
+*.glb           filter=lfs diff=lfs merge=lfs -text
+*.gltf          filter=lfs diff=lfs merge=lfs -text
+
+# Fonts
+*.ttf           filter=lfs diff=lfs merge=lfs -text
+*.otf           filter=lfs diff=lfs merge=lfs -text
+
+# Misc binaries
+*.dll           binary
+*.zip           binary
+*.7z            binary
+*.unitypackage  binary
